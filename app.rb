@@ -14,6 +14,7 @@ end
 
 get_or_post '/' do
   
+  =begin
   if params.empty? == false then
     if params[:sawmessage].empty? == false then
       RestClient.post 'http://127.0.0.1:5984/sawtest', {'body'=>"#{params[:sawmessage]}", 'userid'=>"999", 'time'=>[2,2,2011]}.to_json, :content_type => :json, :accept => :json
@@ -29,6 +30,7 @@ get_or_post '/' do
   #  puts row['key'] << row['value']
   #end
   erb :index
-  
+  =end
+  puts "hello"
 end
 

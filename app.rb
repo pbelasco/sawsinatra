@@ -3,8 +3,13 @@ require 'sinatra'
 require 'json'
 require 'rest_client'
 
+local = true
 
-DB = "#{ENV['CLOUDANT_URL']}/sawtest"
+if local == false then
+  DB = "#{ENV['CLOUDANT_URL']}/sawtest"
+else
+  DB = "http://127.0.0.1:5984/sawtest"
+end
 
 def get_or_post(path, opts={}, &block)
   get(path, opts, &block)

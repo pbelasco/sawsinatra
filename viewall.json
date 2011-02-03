@@ -1,0 +1,9 @@
+{
+	"_id" : "_design/example",
+	"views" : {
+		"viewall" : {
+	
+			"map" : "function (doc){ emit(doc._id,[doc.body, doc.time])}"
+			}
+		}
+}

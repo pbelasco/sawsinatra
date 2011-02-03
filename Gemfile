@@ -1,5 +1,5 @@
 source :gemcutter
 
 gem "sinatra"
-gem "rest_client"
+gem "rest-client"
 gem "json"

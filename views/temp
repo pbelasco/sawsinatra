@@ -1,0 +1,9 @@
+<!-- <%= "#{session["userid"]}"%> -->
+<div id = "posts">
+	<!-- <% @result.each do |row| %>-->
+	<div id = "message">
+	<!--<%= "#{row['key']}  #{row['value']}" %> -->
+	
+	</div>
+	<br/>
+<!-- 	<% end %>  -->

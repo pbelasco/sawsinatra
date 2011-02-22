@@ -18,7 +18,7 @@ use Rack::Session::Cookie, :key => 'userid',
 local = false
 
 if local == false then
-  DB = "#{ENV['CLOUDANT_URL']}/isaw"
+  DB = "#{ENV['CLOUDANT_URL']}/sawtest"
 else
   DB = "http://127.0.0.1:5984/isaw"
 end

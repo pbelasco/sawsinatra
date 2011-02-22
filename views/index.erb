@@ -1,14 +1,12 @@
-<p>This is the index view duude</p>
 
-
-
-<% @result.each do |row| %>
-<%= "#{row['key']}  #{row['value']}" %>
-<br/>
-<% end %> 
-
-<form action="/" method="post" accept-charset="utf-8">
+<div id = "wrapper">
+	<div id = "posts">
+	</div>
+<form action="#" accept-charset="utf-8">
 	
-<textarea name="sawmessage" rows="8" cols="40"></textarea>
-	<p><input type="submit" value="Continue &rarr;" /></p>
+<textarea name = "sawmessage" id = "sawmessage" rows = "8" cols = "40"></textarea>
+	<p><input id = "say" type="submit" value="Continue &rarr;" /></p>
 </form>
+
+</div>
+

@@ -15,7 +15,7 @@ use Rack::Session::Cookie, :key => 'userid',
                            :path => '/',
                            :expire_after => 94608000 # In seconds
 
-local = true
+local = false
 
 if local == false then
   DB = "#{ENV['CLOUDANT_URL']}/sawtest"
@@ -44,11 +44,11 @@ get_or_post '/' do
       
       #response.set_cookie("userid",{:value => "meh", :secure => true, :expire_after => Time.now + 94608000})
       #ret = request.cookies["userid"]
-      puts " x and y values are #{params[:x]},#{params[:y]}"
+      puts " body before being stored in couchDB is #{params[:sawmessage]}"
       
       time = Time.new
       RestClient.post "#{DB}", {'body'=>"#{params[:sawmessage]}", 'userid'=>userid,  'x'=>"#{params[:x]}", 'y'=>"#{params[:y]}", 'time'=>[time.day, time.month, time.year, time.hour, time.min, time.sec]}.to_json, :content_type => :json, :accept => :json
-      Pusher['test_channel'].trigger('my_event', "#{params[:sawmessage]},#{params[:x]},#{params[:y]}")
+      Pusher['test_channel'].trigger('my_event', "{'msg':'#{params[:sawmessage]}','x':'#{params[:x]}','y':'#{params[:y]}' }")
     end
   else
     puts "empty message motherfucker"

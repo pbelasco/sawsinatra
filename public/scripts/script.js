@@ -4,8 +4,10 @@ $(document).ready(function(){
 	
 	$(".massage").draggable();
 	
+	$("#bottom").draggable({handle:"#button"});
 	
-	$("#button").click(function(){
+	
+	$("#button").dblclick(function(){
 		
 		$("#myForm").toggle(1000);
 		
@@ -23,11 +25,13 @@ $(document).ready(function(){
 	    var pusher = new Pusher('26eaaa68d90c2a0cf4a7');
 	    var channel = pusher.subscribe('test_channel');
 	    channel.bind('my_event', function(data) {
-		var values = data.split(",");
-		var x = values[1];
-		var y = values[2];
-	      $("#posts").append("<div class ='massage'><p>"+values[0]+"</p></div>");
-			$(".message:hidden:last").fadeIn(1000);
+	//	var values = data.split(",");
+	console.log(data);
+		var values = JSON.parse(data);
+		var x = values['x'];
+		var y = values['y'];
+	      $("#posts").append("<div class ='massage startHidden'><p>"+values['msg']+"</p></div>");
+			$(".massage:hidden:last").fadeIn(1000);
 			
 			console.log(x+", "+y);
 			$(".massage:last").css({
@@ -40,8 +44,8 @@ $(document).ready(function(){
 	    });
 		
 	$("#say").click(function(event){
-		var x = Math.random() * window.innerWidth;
-		var y = Math.random() * window.innerHeight;
+		var x = Math.random() * (window.innerWidth * 5);
+		var y = Math.random() * (window.innerHeight);
 		console.log(x.toString() + "," + y.toString())
 		//alert($("#sawmessage").val());	
 		$.ajax({

@@ -1,11 +1,11 @@
 
 <div id = "wrapper">
 	<div id = "posts">
-			 <% @result.each do |row| %>
+			 <% @result.reverse_each do |row| %>
 			<div class = "massage" style = "position:absolute;top:
-			<%= "#{row['value'][1]}" %>px;
+			<%= "#{row['value'][2]}" %>px;
 			left:
-			<%= "#{row['value'][2]}" %>px
+			<%= "#{row['value'][1]}" %>px
 			">
 			<p>	<%= "#{row['value'][0]}" %> </p>
 

@@ -13,6 +13,13 @@ $(document).ready(function(){
 	    channel.bind('my_event', function(data) {
 	      $("#posts").append("<div class ='message'><p>"+data+"</p></div>");
 			$(".message:hidden:last").fadeIn(1000);
+			var x = Math.random() * window.innerWidth;
+			var y = Math.random() * window.innerHeight;
+			$(".message:last").css({
+			"position": "absolute",
+			"top": x+"px",
+			"left": y+"px"	
+			});
 			$(".message:last").draggable();
 		console.log(data);
 	    });

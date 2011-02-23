@@ -11,7 +11,7 @@ $(document).ready(function(){
 	    var pusher = new Pusher('26eaaa68d90c2a0cf4a7');
 	    var channel = pusher.subscribe('test_channel');
 	    channel.bind('my_event', function(data) {
-	      $("#posts").append("<div class ='message'><p>"+data+"</p></div>");
+	      $("#posts").append("<div class ='massage'><p>"+data+"</p></div>");
 			$(".message:hidden:last").fadeIn(1000);
 			var x = Math.random() * window.innerWidth;
 			var y = Math.random() * window.innerHeight;

@@ -13,19 +13,7 @@ $(document).ready(function(){
 	    channel.bind('my_event', function(data) {
 	      $("#posts").append("<div class ='message'><p>"+data+"</p></div>");
 			$(".message:hidden:last").fadeIn(1000);
-			$(".message:last").animaDrag({ 
-			    speed: 400, 
-			    interval: 300, 
-			    easing: null, 
-			    cursor: 'move', 
-			    boundary: document.body, 
-			    grip: null, 
-			    overlay: true, 
-			    after: function(e) {}, 
-			    during: function(e) {}, 
-			    before: function(e) {}, 
-			    afterEachAnimation: function(e) {} 
-			});
+			$(".message:last").draggable();
 		console.log(data);
 	    });
 		

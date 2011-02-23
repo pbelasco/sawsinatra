@@ -15,6 +15,7 @@ $(document).ready(function(){
 			$(".message:hidden:last").fadeIn(1000);
 			var x = Math.random() * window.innerWidth;
 			var y = Math.random() * window.innerHeight;
+			console.log(x+", "+y);
 			$(".message:last").css({
 			"position": "absolute",
 			"top": x+"px",

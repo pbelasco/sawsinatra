@@ -81,6 +81,11 @@ body{
 					
 }
 
+.message:hover{
+
+	cursor: move;
+}
+
 p{
 	font-family:'Permanent Marker';
 	font-size:14px;

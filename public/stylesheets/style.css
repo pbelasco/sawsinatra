@@ -1,7 +1,7 @@
 
 
 body{
-	background:#eee;
+	background:url('/images/resize.jpg');
 	margin-top:30px;
 }
 
@@ -24,8 +24,8 @@ body{
 #bottom form{
 
 	position:fixed;
-	top:500px;
-	left:400px;
+	top:75%;
+	left:30%;
 }
 
 .startHidden{

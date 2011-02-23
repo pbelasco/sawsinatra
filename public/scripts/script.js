@@ -30,15 +30,18 @@ $(document).ready(function(){
 	//	var values = JSON.parse(data);
 		var x = data['x'];
 		var y = data['y'];
-	      $("#posts").append("<div class ='massage startHidden'><p>"+data['msg']+"</p></div>");
+	      $("#posts").append("<div class ='massage startHidden'><p class = 'startHidden'>"+data['msg']+"</p></div>");
+		
 			$(".massage:hidden:last").fadeIn(1000);
-			
 			console.log(x+", "+y);
 			$(".massage:last").css({
 			"position": "absolute",
 			"top": y+"px",
 			"left": x+"px"	
 			});
+			
+		$.scrollTo($(".massage:last"), 1600, {zIndex: 2700, offset:-50, onAfter:function(){$(".massage:last p").fadeIn(1000);}});
+			
 			$(".massage:last").draggable();
 		console.log(data);
 	    });

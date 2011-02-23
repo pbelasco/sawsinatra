@@ -18,8 +18,8 @@ $(document).ready(function(){
 			console.log(x+", "+y);
 			$(".message:last").css({
 			"position": "absolute",
-			"top": x+"px",
-			"left": y+"px"	
+			"top": y+"px",
+			"left": x+"px"	
 			});
 			$(".message:last").draggable();
 		console.log(data);

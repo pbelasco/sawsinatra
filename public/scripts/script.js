@@ -27,10 +27,10 @@ $(document).ready(function(){
 	    channel.bind('my_event', function(data) {
 	//	var values = data.split(",");
 	console.log(data);
-		var values = JSON.parse(data);
-		var x = values['x'];
-		var y = values['y'];
-	      $("#posts").append("<div class ='massage startHidden'><p>"+values['msg']+"</p></div>");
+	//	var values = JSON.parse(data);
+		var x = data['x'];
+		var y = data['y'];
+	      $("#posts").append("<div class ='massage startHidden'><p>"+data['msg']+"</p></div>");
 			$(".massage:hidden:last").fadeIn(1000);
 			
 			console.log(x+", "+y);

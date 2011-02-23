@@ -48,7 +48,7 @@ get_or_post '/' do
       
       time = Time.new
       RestClient.post "#{DB}", {'body'=>"#{params[:sawmessage]}", 'userid'=>userid,  'x'=>"#{params[:x]}", 'y'=>"#{params[:y]}", 'time'=>[time.day, time.month, time.year, time.hour, time.min, time.sec]}.to_json, :content_type => :json, :accept => :json
-      Pusher['test_channel'].trigger('my_event', "{'msg':'#{params[:sawmessage]}','x':'#{params[:x]}','y':'#{params[:y]}' }")
+      Pusher['test_channel'].trigger('my_event', {'msg'=>"#{params[:sawmessage]}",'x'=>"#{params[:x]}",'y'=>"#{params[:y]}" }.to_json)
     end
   else
     puts "empty message motherfucker"

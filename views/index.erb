@@ -1,11 +1,22 @@
 
 <div id = "wrapper">
 	<div id = "posts">
+			 <% @result.each do |row| %>
+			<div class = "massage" style = "position:absolute;top:
+			<%= "#{row['value'][1]}" %>px;
+			left:
+			<%= "#{row['value'][2]}" %>px
+			">
+			<p>	<%= "#{row['value'][0]}" %> </p>
+
+		</div>
+		 	<% end %> 
 		
 	</div>
 	
 	<div id = "bottom">
-		<form action="#" accept-charset="utf-8">
+		<div id = button>Clicky</div>
+		<form id ="myForm" action="#" accept-charset="utf-8">
 	
 		<textarea name = "sawmessage" id = "sawmessage" rows = "4" cols = "60"></textarea>
 			<p><input id = "say" type="submit" value="Continue &rarr;" /></p>

@@ -1,7 +1,7 @@
 
 
 body{
-	/*background:url('/images/resize.jpg');*/
+	background:url('/images/resize.jpg');
 	margin-top:30px;
 }
 
@@ -18,19 +18,46 @@ body{
 
 #bottom{
 
+position:fixed;
+width:450px;
+top:75%;
+left:40%;
 	margin: 0 auto;
+}
+
+#button{
+	width:25%;
+	-moz-border-radius:10px;
+	color:#fff;
+	text-shadow:rgba(0, 0 ,0, 0.3) 1px -2px 1px ;
+	text-align:center;
+	background:-moz-linear-gradient(#eee, #999);
+	padding:5px;
+}
+#button:hover{
+	background:-moz-linear-gradient(#999, #eee);
+	text-shadow:rgba(0, 0 ,0, 0.3) 1px -2px 1px ;
 }
 
 #bottom form{
 
-	position:fixed;
-	top:75%;
-	left:40%;
+
 }
 
 .startHidden{
 
 	display:none;
+}
+
+.massage{
+
+	width:250px;
+	background:#fcf59b;
+	
+	background: -moz-repeating-linear-gradient( top, #fcf59b, #fcf59b 18px, #81cbde 20px);
+	-moz-box-shadow: rgba(0, 0, 0, 0.592969) 0px 1px 10px, rgba(0, 0, 0, 0.2) 0px 0px 50px inset;
+
+
 }
 
 .message{

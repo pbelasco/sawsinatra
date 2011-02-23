@@ -16,12 +16,12 @@ $(document).ready(function(){
 			var x = Math.random() * window.innerWidth;
 			var y = Math.random() * window.innerHeight;
 			console.log(x+", "+y);
-			$(".message:last").css({
+			$(".massage:last").css({
 			"position": "absolute",
 			"top": y+"px",
 			"left": x+"px"	
 			});
-			$(".message:last").draggable();
+			$(".massage:last").draggable();
 		console.log(data);
 	    });
 		

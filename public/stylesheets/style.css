@@ -3,6 +3,7 @@
 body{
 	background:url('/images/resize.jpg');
 	margin-top:30px;
+	font-family:Helvetica;
 }
 
 #wrapper{
@@ -16,33 +17,55 @@ body{
 	margin: 0 auto;
 }
 
+
+div .justAdded{
+	-moz-box-shadow: 3px 2px 3px 2px rgba(0, 0, 255, 0.3) ;
+	-webkit-box-shadow: 3px 2px 3px 2px rgba(0, 0, 255, 0.3) ;
+}
+
+
 #bottom{
 
-position:fixed;
-width:450px;
-top:75%;
-left:40%;
-	margin: 0 auto;
+	position:fixed;
+	width:410px;
+	top:30%;
+	left:40%;
+	padding-left:30px;
+	background: rgba(255, 255, 255, 0.7);
+	-moz-border-radius:15px;
+
 }
 
 #button{
 	width:25%;
 	-moz-border-radius:10px;
 	color:#fff;
-	text-shadow:rgba(0, 0 ,0, 0.3) 1px -2px 1px ;
+	text-shadow:rgba(0, 0 , 0, 0.3) 1px -2px 1px ;
 	text-align:center;
-	background:-moz-linear-gradient(#eee, #999);
+	background:-moz-linear-gradient(#000, #999);
 	padding:5px;
 }
 #button:hover{
-	background:-moz-linear-gradient(#999, #eee);
+	background:-moz-linear-gradient(#999, #000);
 	text-shadow:rgba(0, 0 ,0, 0.3) 1px -2px 1px ;
 	cursor:move;
 }
 
-#bottom form{
+#sawmessage{
+	font-family:Helvetica;
+	font-size:18px;
+	line-height:30px;
+	width:300px;
+	height:150px;
+	padding:5px;
+	background:#fcf59b;
+	-moz-border-radius:15px;
+	background: -moz-repeating-linear-gradient( top, #fcf59b, #fcf59b 28px, #81cbde 30px);
+}
 
-
+#say{
+	font-size:18px;
+	background:#ccc;
 }
 
 .startHidden{
@@ -58,8 +81,7 @@ left:40%;
 	-moz-border-radius-bottomleft: 20px 500px;
 	-moz-border-radius-bottomright: 500px 30px;
 	-moz-border-radius-topright: 5px 100px;
-	
-	-moz-box-shadow: 0px 2px 10px 1px #333;	
+	-moz-box-shadow: 0px 2px 10px 1px #333;
 	
 }
 

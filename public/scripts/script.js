@@ -1,5 +1,8 @@
 $(document).ready(function(){
 	
+	var boardWidth = 4000;
+	var boardHeight = 1000;
+	
 	//tag all items injected by couchDB as draggable
 	
 	$(".massage").draggable();
@@ -30,7 +33,7 @@ $(document).ready(function(){
 	//	var values = JSON.parse(data);
 		var x = data['x'];
 		var y = data['y'];
-	      $("#posts").append("<div class ='massage startHidden'><p class = 'startHidden'>"+data['msg']+"</p></div>");
+	      $("#posts").append("<div class ='justAdded massage startHidden'><p class = 'startHidden'>"+data['msg']+"</p></div>");
 		
 			$(".massage:hidden:last").fadeIn(1000);
 			console.log(x+", "+y);
@@ -42,13 +45,15 @@ $(document).ready(function(){
 			
 		$.scrollTo($(".massage:last"), 1600, {zIndex: 2700, offset:-50, onAfter:function(){$(".massage:last p").fadeIn(1000);}});
 			
-			$(".massage:last").draggable();
+			$(".massage:last").draggable({
+				start: function(){ $(this).removeClass('justAdded')}
+			});
 		console.log(data);
 	    });
 		
 	$("#say").click(function(event){
-		var x = Math.random() * (window.innerWidth * 5);
-		var y = Math.random() * (window.innerHeight);
+		var x = Math.random() * (boardWidth);
+		var y = Math.random() * (boardHeight);
 		console.log(x.toString() + "," + y.toString())
 		//alert($("#sawmessage").val());	
 		$.ajax({

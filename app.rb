@@ -42,13 +42,15 @@ get_or_post '/' do
             
       end
       
+      msgid = rand(36**50).to_s(36)
+      
       #response.set_cookie("userid",{:value => "meh", :secure => true, :expire_after => Time.now + 94608000})
       #ret = request.cookies["userid"]
       puts " body before being stored in couchDB is #{params[:sawmessage]}"
       
       time = Time.new
-      RestClient.post "#{DB}", {'body'=>"#{params[:sawmessage]}", 'userid'=>userid,  'x'=>"#{params[:x]}", 'y'=>"#{params[:y]}", 'time'=>[time.day, time.month, time.year, time.hour, time.min, time.sec]}.to_json, :content_type => :json, :accept => :json
-      Pusher['test_channel'].trigger('my_event', {'msg'=>"#{params[:sawmessage]}",'x'=>"#{params[:x]}",'y'=>"#{params[:y]}" }.to_json)
+      RestClient.post "#{DB}", {'_id' => msgid, 'body'=>"#{params[:sawmessage]}", 'userid'=>userid,  'x'=>"#{params[:x]}", 'y'=>"#{params[:y]}", 'time'=>[time.day, time.month, time.year, time.hour, time.min, time.sec]}.to_json, :content_type => :json, :accept => :json
+      Pusher['test_channel'].trigger('my_event', {'id'=>"#{msgid}", 'msg'=>"#{params[:sawmessage]}", 'x'=>"#{params[:x]}", 'y'=>"#{params[:y]}" }.to_json)
     end
   else
     puts "empty message motherfucker"
@@ -62,4 +64,17 @@ get_or_post '/' do
   #end
  erb :index
 end
+
+
+post '/locupdate' do
+  puts "push push"
+   Pusher['test_channel'].trigger('locupdate', {'id'=>"#{params[:id]}", 'x'=>"#{params[:newX]}", 'y'=>"#{params[:newY]}" }.to_json)
+end
+
+
+
+
+
+
+
 

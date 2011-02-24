@@ -15,7 +15,7 @@ use Rack::Session::Cookie, :key => 'userid',
                            :path => '/',
                            :expire_after => 94608000 # In seconds
 
-local = false
+local = true
 
 if local == false then
   DB = "#{ENV['CLOUDANT_URL']}/sawtest"

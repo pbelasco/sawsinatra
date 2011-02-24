@@ -11,18 +11,19 @@ $(document).ready(function(){
 		
 		function(){
 		
-				var position = $(this).position();
+				var elem = $(this);
+				var position = elem.position();
 				//console.log($(this));
 				console.log($(this).attr('id') + "stopped at "+position.left+" "+position.top);
-				 //return function(position){
+				  (function(position, elem){
 						$.ajax({
 							url: '/locupdate',
 							type: 'POST',
-							data:{'id':$(this).attr('id'), 'newX':$(this).position().left, 'newY': $(this).position().top},
+							data:{'id':elem.attr('id'), 'newX':position.left, 'newY': position.top},
 							dataType: 'JSON',
 							success:function(){}
 							});
-				//	}
+				})(position,elem)
 			
 			
 	}

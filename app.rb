@@ -15,7 +15,7 @@ use Rack::Session::Cookie, :key => 'userid',
                            :path => '/',
                            :expire_after => 94608000 # In seconds
 
-local = false
+local = true
 
 if local == false then
   DB = "#{ENV['CLOUDANT_URL']}/sawtest"
@@ -46,10 +46,11 @@ get_or_post '/' do
       
       #response.set_cookie("userid",{:value => "meh", :secure => true, :expire_after => Time.now + 94608000})
       #ret = request.cookies["userid"]
-      puts " body before being stored in couchDB is #{params[:sawmessage]}"
+      puts " body before being stored in couchDB is #{params}"
       
       time = Time.new
-      RestClient.post "#{DB}", {'_id' => msgid, 'body'=>"#{params[:sawmessage]}", 'userid'=>userid,  'x'=>"#{params[:x]}", 'y'=>"#{params[:y]}", 'time'=>[time.day, time.month, time.year, time.hour, time.min, time.sec]}.to_json, :content_type => :json, :accept => :json
+      #
+      RestClient.post "#{DB}", {'_id' => msgid, 'body'=>"#{params[:sawmessage]}", 'userid'=>"#{params[:userid]}",  'x'=>"#{params[:x]}", 'y'=>"#{params[:y]}", 'time'=>[time.year, time.month, time.day, time.hour, time.min, time.sec] }.to_json, :content_type => :json, :accept => :json
       Pusher['test_channel'].trigger('my_event', {'id'=>"#{msgid}", 'msg'=>"#{params[:sawmessage]}", 'x'=>"#{params[:x]}", 'y'=>"#{params[:y]}" }.to_json)
     end
   else
@@ -69,6 +70,21 @@ end
 post '/locupdate' do
   puts "push push"
    Pusher['test_channel'].trigger('locupdate', {'id'=>"#{params[:id]}", 'x'=>"#{params[:newX]}", 'y'=>"#{params[:newY]}" }.to_json)
+end
+
+post '/reply' do
+  
+  #get the rev number of the document we want to update
+  data = JSON.parse (RestClient.get "#{DB}/#{params[:receiverId]}")
+  data['msg'] = {'msgbody'=>"#{params[:msg]}",'senderid'=>"#{params[:senderId]}"}; 
+  
+  #RestClient.post "#{DB}/_design/addmsg/_update/addmsg/#{params[:receiverId]}?senderid=666&msg=#{params[:msg]}"
+  
+  RestClient.put "#{DB}/#{params[:receiverId]}", data.to_json, :content_type => :json, :accept => :json
+  
+  #RestClient.post "#{DB}", {'_id' => msgid, 'body'=>"#{params[:sawmessage]}", 'userid'=>"#{params[:userid]}",  'x'=>"#{params[:x]}", 'y'=>"#{params[:y]}", 'time'=>[time.day, time.month, time.year, time.hour, time.min, time.sec]}.to_json, :content_type => :json, :accept => :json
+  
+  
 end
 
 

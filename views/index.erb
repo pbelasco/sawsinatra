@@ -8,8 +8,19 @@
 			<%= "#{row['value'][1]}" %>px
 			">
 			<p>	<%= "#{row['value'][0]}" %> </p>
+			
+			<input class = "reply" type="submit" value="Reply" />
+			<% if row['value'][3].nil? == false %>
+				<div class = "replyPost">
+					<p><%= "#{row['value'][3]['msgbody']}"%></p>
+
+				</div>
+				
+				<% end %>
 
 		</div>
+		
+		
 		 	<% end %> 
 		
 	</div>

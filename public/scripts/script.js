@@ -53,7 +53,7 @@ $(document).ready(function(){
 	    channel.bind('my_event', function(data) {
 					var x = data['x'];
 					var y = data['y'];
-				      $("#posts").append("<div class ='justAdded massage startHidden' id = "+data["id"]+" ><p class = 'startHidden'>"+data['msg']+"</p></div>");
+				      $("#posts").append("<div class ='justAdded massage startHidden' id = "+data["id"]+" ><p class = 'startHidden'>"+data['msg']+"</p><input class = 'reply' type='submit' value='Reply /></div>");
 		
 						$(".massage:hidden:last").fadeIn(1000);
 					
@@ -79,25 +79,52 @@ $(document).ready(function(){
 			}, 500);
 			
 		});
-	
-	
-	
+		
 		
 	$("#say").click(function(event){
 		var x = Math.random() * (boardWidth);
 		var y = Math.random() * (boardHeight);
 		console.log(x.toString() + "," + y.toString())
+		var userid = localStorage.getItem("userid");
+		if(userid === null){
+			userid = Date.now().toString() + (Math.random() * 0x100000000).toString();
+		}
 		//alert($("#sawmessage").val());	
 		$.ajax({
 		url: '/',
 		type: 'POST',
-		data:{'sawmessage':$("#sawmessage").val(), 'x':x.toString(), 'y':y.toString()},
+		data:{'userid':userid, 'sawmessage':$("#sawmessage").val(), 'x':x.toString(), 'y':y.toString()},
 		dataType: 'JSON',
 		success:function(){alert("submitted");}
 		});
+		
+		localStorage.setItem("userid", userid)
 		event.preventDefault();	
 		return false;
 
+	});
+	
+	
+	$(".reply").live("click", function(){
+		
+		var parentDiv = $(this).parent();
+		
+		console.log(parentDiv);
+		
+		var payload = {'receiverId': parentDiv.attr('id').toString(), 'msg': "hi there, extending the reply message so that it spans multiple lines and then I can see the rules on the paper", 'senderId':'666'};
+		
+			$.ajax({
+			url: '/reply',
+			type: 'POST',
+			data: payload,
+			dataType: 'JSON',
+			success:function(){
+				
+				parentDiv.append("<div class='replyPost'><p>" + payload.msg + "</p></div>" );
+				
+			}
+			});
+		
 	});
 	
 });

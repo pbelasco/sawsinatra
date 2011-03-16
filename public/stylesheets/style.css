@@ -97,6 +97,7 @@ div .justAdded{
 
 .replyPost{
 	position:relative;
+	left:30px;
 	margin-top:15px;
 	color:"#fff";
 	width:250px;

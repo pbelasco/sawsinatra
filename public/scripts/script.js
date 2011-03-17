@@ -53,7 +53,7 @@ $(document).ready(function(){
 	    channel.bind('my_event', function(data) {
 					var x = data['x'];
 					var y = data['y'];
-				      $("#posts").append("<div class ='justAdded massage startHidden' id = "+data["id"]+" ><p class = 'startHidden'>"+data['msg']+"</p><input class = 'reply' type='submit' value='Reply /></div>");
+				      $("#posts").append("<div class ='justAdded massage startHidden' id = "+data["id"]+" ><p class = 'startHidden'>"+data['msg']+"</p><input class = 'reply' type='submit' value='Reply' /></div>");
 		
 						$(".massage:hidden:last").fadeIn(1000);
 					
@@ -101,6 +101,19 @@ $(document).ready(function(){
 		localStorage.setItem("userid", userid)
 		event.preventDefault();	
 		return false;
+
+	});
+	
+	$("#clear").click(function(event){
+		
+		var postsDiv = $("#posts");
+		postsDiv.fadeOut(2000, function(){
+			postsDiv.html("");
+			postsDiv.fadeIn();
+		});
+	
+		return false;
+	
 
 	});
 	

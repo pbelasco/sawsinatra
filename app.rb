@@ -60,6 +60,7 @@ get_or_post '/' do
   data = RestClient.get "#{DB}/_design/viewall/_view/viewall?limit=50&descending=true"
   puts "yeah"
   @result = JSON.parse(data)['rows']
+ 
    #do |row|
   #  puts row['key'] << row['value']
   #end

@@ -7,6 +7,13 @@ $(document).ready(function(){
 	
 	$(".massage").draggable();
 	
+	//if user has ID stored in localStorage, see if he has any replies
+	var userid = localStorage.getItem("userid");
+	if(userid!=null){
+		
+		
+	}
+	
 	$(".massage").live("dragstop", 
 		
 		function(){
@@ -124,7 +131,12 @@ $(document).ready(function(){
 		
 		console.log(parentDiv);
 		
-		var payload = {'receiverId': parentDiv.attr('id').toString(), 'msg': "hi there, extending the reply message so that it spans multiple lines and then I can see the rules on the paper", 'senderId':'666'};
+	
+		if(userid === null){
+			userid = Date.now().toString() + (Math.random() * 0x100000000).toString();
+		}
+		
+		var payload = {'receiverId': parentDiv.attr('id').toString(), 'msg': "hi there, extending the reply message so that it spans multiple lines and then I can see the rules on the paper", 'senderId':userid};
 		
 			$.ajax({
 			url: '/reply',
@@ -133,7 +145,8 @@ $(document).ready(function(){
 			dataType: 'JSON',
 			success:function(){
 				
-				parentDiv.append("<div class='replyPost'><p>" + payload.msg + "</p></div>" );
+				/*parentDiv.append("<div class='replyPost'><p>" + payload.msg + "</p></div>" );*/
+				localStorage.setItem("userid", userid)
 				
 			}
 			});

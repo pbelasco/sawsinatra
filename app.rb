@@ -89,6 +89,14 @@ post '/reply' do
 end
 
 
+get '/messages' do
+  
+  userid = params[:userid]
+  data = JSON.parse(RestClient.get "#{DB}/")
+  
+end
+
+
 
 
 

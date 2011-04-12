@@ -3,9 +3,7 @@
 	<div id = "posts">
 			 <% @result.reverse_each do |row| %>
 			<div class = "massage" 
-			id = "
-			<%="#{row['value'][0]}" %>
-			"
+			id = "<%="#{row['value'][0]}" %>"
 			style = "position:absolute;top:
 			<%= "#{row['value'][3]}" %>px;
 			left:
@@ -14,14 +12,7 @@
 			<p>	<%= "#{row['value'][1]}" %> </p>
 			
 			<input class = "reply" type="submit" value="Reply" />
-			<% if row['value'][4].nil? == false %>
-				<div class = "replyPost">
-					<p><%= "#{row['value'][4]['msgbody']}"%></p>
-
-				</div>
-				
-				<% end %>
-
+			
 		</div>
 		
 		

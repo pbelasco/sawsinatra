@@ -1,9 +1,11 @@
 
 
 body{
-	background:url('/images/resize.jpg');
+	background:url('/images/resize.jpg') 10px bottom;
 	margin-top:30px;
 	font-family:Helvetica;
+	overflow-x:scroll;
+	overflow-y:scroll;
 }
 
 #wrapper{
@@ -77,7 +79,7 @@ div .justAdded{
 
 .massage{
 
-	width:250px;
+	width:350px;
 	line-height:26px;
 	background:#fcf59b;
 	background: -moz-repeating-linear-gradient( top, #fcf59b, #fcf59b 28px, #81cbde 30px);
@@ -85,18 +87,15 @@ div .justAdded{
 	-moz-border-radius-bottomright: 500px 30px;
 	-moz-border-radius-topright: 5px 100px;
 	-moz-box-shadow: 0px 2px 10px 1px #333;
-	-moz-transition: all 0.25s linear;
-	-webkit-transition: all 0.25s linear;
+	-moz-transform:  scale(0.8, 0.8); 
+	-webkit-transform:  scale(0.8, 0.8); 
+	-moz-transition: all 0.25s ease-in 0.4s;
+	-webkit-transition: all 0.25s ease-in 0.4s;
 	
 }
 
 .massage:hover{
-
-	-moz-transform:  scale(2, 2); 
-	-webkit-transform: scale(2, 2); 
 	z-index:1;
-
-
 }
 
 .reply{

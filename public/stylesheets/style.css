@@ -106,7 +106,8 @@ div .justAdded{
 	
 	-moz-transform:  scale(0.8, 0.8); 
 	-webkit-transform:  scale(0.8, 0.8); 
-
+	-moz-transition: z-index 0.25s ease-in 0.4s;
+	-webkit-transition: z-index 0.25s ease-in 0.4s;
 	
 }
 

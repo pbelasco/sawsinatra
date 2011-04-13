@@ -54,7 +54,7 @@ get_or_post '/' do
       Pusher['test_channel'].trigger('my_event', {'id'=>"#{msgid}", 'msg'=>"#{params[:sawmessage]}", 'x'=>"#{params[:x]}", 'y'=>"#{params[:y]}" }.to_json)
     end
   else
-    puts "empty message motherfucker"
+    puts "empty message"
   end
   
   data = RestClient.get "#{DB}/_design/viewall/_view/viewall?limit=50&descending=true"

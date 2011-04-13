@@ -1,11 +1,18 @@
 $(document).ready(function(){
-	
-	var boardWidth = 4000;
-	var boardHeight = 1000;
+
+	var boardWidth = 10000;
+	var boardHeight = 500;
 	
 	//tag all items injected by couchDB as draggable
+	var messages = 	$(".massage");
+	messages.draggable();
 	
-	$(".massage").draggable();
+/*	messages.each(function(){
+		var num = -10 + Math.random() * 20; 
+		$(this).css("-webkit-transform","rotate("+num+"deg)");
+		$(this).css("-moz-transform","rotate("+num+"deg)");
+		});*/
+
 	
 	//if user has ID stored in localStorage, see if he has any replies
 	var userid = localStorage.getItem("userid");
@@ -14,7 +21,7 @@ $(document).ready(function(){
 		
 	}
 	
-	$(".massage").live("dragstop", 
+	messages.live("dragstop", 
 		
 		function(){
 		
@@ -60,7 +67,7 @@ $(document).ready(function(){
 	    channel.bind('my_event', function(data) {
 					var x = data['x'];
 					var y = data['y'];
-				      $("#posts").append("<div class ='justAdded massage startHidden' id = "+data["id"]+" ><p class = 'startHidden'>"+data['msg']+"</p><input class = 'reply' type='submit' value='Reply' /></div>");
+				      $("#posts").append("<div class ='justAdded massage startHidden' id = "+data["id"]+" ><p class = 'startHidden'>"+data['msg']);//+"</p><input class = 'reply' type='submit' value='Reply' /></div>"
 		
 						$(".massage:hidden:last").fadeIn(1000);
 					
@@ -90,7 +97,7 @@ $(document).ready(function(){
 		
 	$("#say").click(function(event){
 		var x = Math.random() * (boardWidth);
-		var y = Math.random() * (boardHeight);
+		var y = 50 + Math.random() * (boardHeight - 50);
 		console.log(x.toString() + "," + y.toString())
 		var userid = localStorage.getItem("userid");
 		if(userid === null){

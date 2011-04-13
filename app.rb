@@ -57,7 +57,7 @@ get_or_post '/' do
     puts "empty message"
   end
   
-  data = RestClient.get "#{DB}/_design/viewall/_view/viewall?limit=50&descending=true"
+  data = RestClient.get "#{DB}/_design/viewall/_view/viewall?limit=25&descending=true"
   puts "yeah"
   @result = JSON.parse(data)['rows']
  

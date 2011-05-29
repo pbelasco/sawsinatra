@@ -2,36 +2,26 @@
 
 <div class = "massage-title" style=""><p>you</p></div>
 <div id = "wrapper">
-	<div id = "posts">
-			 <% @result.reverse_each do |row| %>
-			<div class = "massage" 
-			id = "<%="#{row['value'][0]}" %>"
-			style = "position:absolute;top:
-			<%= "#{row['value'][3]}" %>px;
-			left:
-			<%= "#{row['value'][2]}" %>px
-			">
-			<p>	<%= "#{row['value'][1]}" %> </p>
-			
-		<!--	<input class = "reply" type="submit" value="Reply" /> -->
-			
-		</div>
-		
-		
-		 	<% end %> 
-		
-	</div>
-	
-	<div id = "bottom">
-		<div id = button>Clicky</div>
-		<form id ="myForm" action="#" accept-charset="utf-8">
-	
-		<textarea name = "sawmessage" id = "sawmessage" rows = "4" cols = "60" placeholder="whom did who see?"></textarea>
-			<p><input id = "say" type="submit" value="Post!" /></p>
-			<p><input id = "clear" type="submit" value="Clear!" /></p>
-		</form>
-		
-	</div>
-
+  <div id = "posts">
+    <% @result.reverse_each do |row| %>
+      <div class = "massage" 
+        id = "<%="#{row['value'][0]}" %>"
+        style = "position:absolute;top:
+          <%= "#{row['value'][3]}" %>px;
+          left:
+          <%= "#{row['value'][2]}" %>px ">
+        <p>	<%= "#{row['value'][1]}" %> </p>
+          <!--	currently disabled <input class = "reply" type="submit" value="Reply" /> -->
+      </div>
+      <% end %> 
+    </div>
+  <div id = "bottom">
+    <div id = button>Clicky</div>
+    <form id ="myForm" action="#" accept-charset="utf-8">
+      <textarea name = "sawmessage" id = "sawmessage" rows = "4" cols = "60" placeholder="whom did who see?"></textarea>
+      <p><input id = "say" type="submit" value="Post!" /></p>
+      <p><input id = "clear" type="submit" value="Clear!" /></p>
+    </form>
+  </div>
 </div>
 

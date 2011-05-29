@@ -1,1 +1,1 @@
-Simple Sinatra app backed by couchDB to act as a shoutbox
+Simple Sinatra app backed by couchDB to act as a shoutbox. Users enter messages and online users are notified of new messages via PusherApp(websockets)

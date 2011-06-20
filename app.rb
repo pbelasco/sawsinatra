@@ -9,7 +9,7 @@ Pusher.app_id = '4212'
 Pusher.key = '26eaaa68d90c2a0cf4a7'
 Pusher.secret = '70621f6f1c7bf223b1d5'
 
-local = true
+local = false
 
 if local == false then
   DB = "#{ENV['CLOUDANT_URL']}/sawtest"

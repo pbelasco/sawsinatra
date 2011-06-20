@@ -57,7 +57,7 @@ $(document).ready(function(){
    // 5. Profit?
   channel.bind('new_post', function(data) {
     var x = data['x'], y = data['y'];
-    console.log("got something!!");
+    //console.log("got something!!");
     $("#posts").append("<div class='op2'><div class ='justAdded massage box startHidden' id = "+data["id"]+" ><p class = 'startHidden'>"+data['msg']+"</p></div></div>");//+"</p><input class = 'reply' type='submit' value='Reply' /></div>"
     $(".massage:hidden:last").fadeIn(1000);
     $(".massage:last").css({
@@ -71,7 +71,7 @@ $(document).ready(function(){
     });
     //similarly, when any user moves a note, this message is generated so that the newly changed position is broadcast everywhere
     channel.bind('locupdate', function(data) {
-    console.log("got new position! " + data.x+", "+data.y);
+    //console.log("got new position! " + data.x+", "+data.y);
     $("#"+data.id).animate({
       top: data.y,
       left: data.x}, 500);

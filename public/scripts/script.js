@@ -6,13 +6,13 @@ $(document).ready(function(){
   var messages = 	$(".massage");
   messages.draggable();
 	
-/*
+
   //skew notes randomly, currently disabled
   messages.each(function(){
     var num = -10 + Math.random() * 20; 
     $(this).css("-webkit-transform","rotate("+num+"deg)");
     $(this).css("-moz-transform","rotate("+num+"deg)");
-  });*/
+  });
   
 	//if user has ID stored in localStorage, see if he has any replies
 	var userid = localStorage.getItem("userid");
@@ -57,7 +57,8 @@ $(document).ready(function(){
    // 5. Profit?
   channel.bind('new_post', function(data) {
     var x = data['x'], y = data['y'];
-    $("#posts").append("<div class ='justAdded massage startHidden' id = "+data["id"]+" ><p class = 'startHidden'>"+data['msg']);//+"</p><input class = 'reply' type='submit' value='Reply' /></div>"
+    console.log("got something!!");
+    $("#posts").append("<div class='op2'><div class ='justAdded massage box startHidden' id = "+data["id"]+" ><p class = 'startHidden'>"+data['msg']+"</p></div></div>");//+"</p><input class = 'reply' type='submit' value='Reply' /></div>"
     $(".massage:hidden:last").fadeIn(1000);
     $(".massage:last").css({
       "position": "absolute",
@@ -70,7 +71,7 @@ $(document).ready(function(){
     });
     //similarly, when any user moves a note, this message is generated so that the newly changed position is broadcast everywhere
     channel.bind('locupdate', function(data) {
-    //console.log("got new position! " + data.id);
+    console.log("got new position! " + data.x+", "+data.y);
     $("#"+data.id).animate({
       top: data.y,
       left: data.x}, 500);
@@ -92,10 +93,16 @@ $(document).ready(function(){
         userid = Date.now().toString() + (Math.random() * 0x100000000).toString();
       }
       //alert($("#sawmessage").val());	
+       var imgsrc =  $("#imgg").val().replace(/(<([^>]+)>)/ig,"");
+       var img = "";
+      if(imgsrc !== "") {
+        img = "<img src="+imgsrc+" />";
+      }
+      var message = img + $("#sawmessage").val().replace(/(<([^>]+)>)/ig,"");
       $.ajax({
         url: '/',
         type: 'POST',
-        data:{'userid':userid, 'sawmessage':$("#sawmessage").val(), 'x':x.toString(), 'y':y.toString()},
+        data:{'userid':userid, 'sawmessage':message, 'x':x.toString(), 'y':y.toString()},
         dataType: 'JSON',
         success:function(){alert("submitted");}
       });
@@ -104,13 +111,20 @@ $(document).ready(function(){
       return false;
     });
     
+    $("body").dblclick(function(){
+       $(this).css("zoom", 1);
+    });
+    
   // clear the messages client side  
   $("#clear").click(function(event){
-    var postsDiv = $("#posts");
+   /* var postsDiv = $("#posts");
     postsDiv.fadeOut(2000, function(){
       postsDiv.html("");
       postsDiv.fadeIn();
-    });
+    });*/
+    var body = $("#posts");
+    body.css("-webkit-transition", "all 3s linear");
+    body.css("-webkit-transform", "scale(0.2)");
     return false;
   });
   // TODO: actually implement the reply functionality

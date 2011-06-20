@@ -9,7 +9,7 @@ Pusher.app_id = '4212'
 Pusher.key = '26eaaa68d90c2a0cf4a7'
 Pusher.secret = '70621f6f1c7bf223b1d5'
 
-local = false
+local = true
 
 if local == false then
   DB = "#{ENV['CLOUDANT_URL']}/sawtest"
@@ -40,7 +40,7 @@ get_or_post '/' do
       puts " body before being stored in couchDB is #{params}"
       time = Time.new
       RestClient.post "#{DB}", {'_id' => msgid, 'body'=>"#{params[:sawmessage]}", 'userid'=>"#{params[:userid]}",  'x'=>"#{params[:x]}", 'y'=>"#{params[:y]}", 'time'=>[time.year, time.month, time.day, time.hour, time.min, time.sec] }.to_json, :content_type => :json, :accept => :json
-      Pusher['test_channel'].trigger('new_message', {'id'=>"#{msgid}", 'msg'=>"#{params[:sawmessage]}", 'x'=>"#{params[:x]}", 'y'=>"#{params[:y]}" }.to_json)
+      Pusher['test_channel'].trigger!('new_post', {'id'=>"#{msgid}", 'msg'=>"#{params[:sawmessage]}", 'x'=>"#{params[:x]}", 'y'=>"#{params[:y]}" }.to_json)
     end
   else
     puts "empty message"

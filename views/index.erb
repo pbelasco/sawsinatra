@@ -1,10 +1,13 @@
-<p class="title">Somebody likes you @ BCIT</p>
+<div class="title op2"><div class="box"><p>Life's Little Lessons</p></div></div>
 
-<div class = "massage-title" style=""><p>you</p></div>
+<!--<div class = "massage-title" style=""><p>you</p></div>-->
 <div id = "wrapper">
+ 
   <div id = "posts">
+    
     <% @result.reverse_each do |row| %>
-      <div class = "massage" 
+      <div class="op2">
+      <div class = "massage box" 
         id = "<%="#{row['value'][0]}" %>"
         style = "position:absolute;top:
           <%= "#{row['value'][3]}" %>px;
@@ -12,15 +15,16 @@
           <%= "#{row['value'][2]}" %>px ">
         <p>	<%= "#{row['value'][1]}" %> </p>
           <!--	currently disabled <input class = "reply" type="submit" value="Reply" /> -->
+     </div>
       </div>
       <% end %> 
     </div>
   <div id = "bottom">
-    <div id = button>Clicky</div>
+    <span id = button>|||</span>
     <form id ="myForm" action="#" accept-charset="utf-8">
-      <textarea name = "sawmessage" id = "sawmessage" rows = "4" cols = "60" placeholder="whom did who see?"></textarea>
-      <p><input id = "say" type="submit" value="Post!" /></p>
-      <p><input id = "clear" type="submit" value="Clear!" /></p>
+      <input id = "imgg" type="text" placeholder="Choose a small (200x200) image. Optional." />
+      <textarea name = "sawmessage" id = "sawmessage" placeholder="Have a Little Life Lesson?"></textarea>
+      <input id = "say" type="submit" value="Post!" />
     </form>
   </div>
 </div>

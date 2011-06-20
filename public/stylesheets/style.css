@@ -141,6 +141,7 @@ z-index:999;
 .massage img{
   display:block;
   width:100%;
+  margin-bottom: 8px;
 }
 
 .massage:hover{
@@ -250,8 +251,8 @@ z-index:999;
 .massage>p{
  color:black;
   font-family:'Rock Salt';
-  line-height:30px;
-  font-size:12px;
+  line-height:15px;
+  font-size:10px;
   margin: 0;
   padding: 0 5px;
   letter-spacing:3px;
